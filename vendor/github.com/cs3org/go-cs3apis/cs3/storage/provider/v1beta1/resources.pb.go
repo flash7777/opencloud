@@ -379,6 +379,8 @@ type ResourceInfo struct {
 	// OPTIONAL.
 	// StorageSpace where this resource is located.
 	Space *StorageSpace `protobuf:"bytes,19,opt,name=space,proto3" json:"space,omitempty"`
+	// cs3org/cs3apis#272
+	Immutable bool `protobuf:"varint,20,opt,name=immutable,proto3" json:"immutable,omitempty"`
 }
 
 func (x *ResourceInfo) Reset() {
@@ -1051,7 +1053,12 @@ type ResourcePermissions struct {
 	RestoreRecycleItem   bool `protobuf:"varint,17,opt,name=restore_recycle_item,json=restoreRecycleItem,proto3" json:"restore_recycle_item,omitempty"`
 	Stat                 bool `protobuf:"varint,18,opt,name=stat,proto3" json:"stat,omitempty"`
 	UpdateGrant          bool `protobuf:"varint,19,opt,name=update_grant,json=updateGrant,proto3" json:"update_grant,omitempty"`
-	DenyGrant            bool `protobuf:"varint,20,opt,name=deny_grant,json=denyGrant,proto3" json:"deny_grant,omitempty"`
+	DenyGrant             bool `protobuf:"varint,20,opt,name=deny_grant,json=denyGrant,proto3" json:"deny_grant,omitempty"`
+	// cs3org/cs3apis#272
+	DeleteContainer       bool `protobuf:"varint,21,opt,name=delete_container,json=deleteContainer,proto3" json:"delete_container,omitempty"`
+	MoveContainer         bool `protobuf:"varint,22,opt,name=move_container,json=moveContainer,proto3" json:"move_container,omitempty"`
+	SetImmutableFile      bool `protobuf:"varint,23,opt,name=set_immutable_file,json=setImmutableFile,proto3" json:"set_immutable_file,omitempty"`
+	SetImmutableContainer bool `protobuf:"varint,24,opt,name=set_immutable_container,json=setImmutableContainer,proto3" json:"set_immutable_container,omitempty"`
 }
 
 func (x *ResourcePermissions) Reset() {
@@ -1215,6 +1222,41 @@ func (x *ResourcePermissions) GetUpdateGrant() bool {
 func (x *ResourcePermissions) GetDenyGrant() bool {
 	if x != nil {
 		return x.DenyGrant
+	}
+	return false
+}
+
+func (x *ResourcePermissions) GetDeleteContainer() bool {
+	if x != nil {
+		return x.DeleteContainer
+	}
+	return false
+}
+
+func (x *ResourcePermissions) GetMoveContainer() bool {
+	if x != nil {
+		return x.MoveContainer
+	}
+	return false
+}
+
+func (x *ResourcePermissions) GetSetImmutableFile() bool {
+	if x != nil {
+		return x.SetImmutableFile
+	}
+	return false
+}
+
+func (x *ResourcePermissions) GetSetImmutableContainer() bool {
+	if x != nil {
+		return x.SetImmutableContainer
+	}
+	return false
+}
+
+func (x *ResourceInfo) GetImmutable() bool {
+	if x != nil {
+		return x.Immutable
 	}
 	return false
 }

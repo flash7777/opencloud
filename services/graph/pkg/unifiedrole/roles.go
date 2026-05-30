@@ -88,6 +88,12 @@ const (
 	DriveItemBasicRead         = "libre.graph/driveItem/basic/read"
 	DriveItemPermissionsUpdate = "libre.graph/driveItem/permissions/update"
 	DriveItemPermissionsDeny   = "libre.graph/driveItem/permissions/deny"
+
+	// Container-specific permissions (cs3org/cs3apis#272)
+	DriveItemContainerDelete        = "libre.graph/driveItem/container/delete"
+	DriveItemContainerMove          = "libre.graph/driveItem/container/move"
+	DriveItemImmutableFileSet       = "libre.graph/driveItem/immutable/file/set"
+	DriveItemImmutableContainerSet  = "libre.graph/driveItem/immutable/container/set"
 )
 
 var (
